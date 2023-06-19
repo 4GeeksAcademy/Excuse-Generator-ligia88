@@ -1,4 +1,22 @@
 window.onload = function() {
+  // Function to generate a random excuse
+  function generateExcuse(who, action, what, when) {
+    // Select a random element from each array
+    let randomWho = getRandomElement(who);
+    let randomAction = getRandomElement(action);
+    let randomWhat = getRandomElement(what);
+    let randomWhen = getRandomElement(when);
+
+    // Combine the random elements into an excuse string
+    let excuse = `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}`;
+    return excuse;
+  }
+
+  // Helper function to get a random element from an array
+  function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
   // Array of possible "who" options
   let who = ["The cat", "My grandma", "His turtle", "My bird"];
 
@@ -17,20 +35,9 @@ window.onload = function() {
     "while I was praying"
   ];
 
-  // Function to generate a random excuse
-  function generateExcuse() {
-    let randomWho = who[Math.floor(Math.random() * who.length)];
-    let randomAction = action[Math.floor(Math.random() * action.length)];
-    let randomWhat = what[Math.floor(Math.random() * what.length)];
-    let randomWhen = when[Math.floor(Math.random() * when.length)];
-
-    let excuse = `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}`;
-    return excuse;
-  }
-
   // Get the excuse element by its id
   let excuseElement = document.getElementById("excuse");
 
   // Set the innerHTML of the excuse element to a randomly generated excuse
-  excuseElement.innerHTML = generateExcuse();
+  excuseElement.innerHTML = generateExcuse(who, action, what, when);
 };
